@@ -26,7 +26,7 @@ Sorting by price 2
 *** Keyword ***
 ผลการทำงานต้องแสดงผลจากแพงไปถูก
    catalog.Check display result
-   
+
 ทำการเลือก Sorting ด้วย Price จากแพงไปถูก
    catalog.Sort by Price ASC
 
@@ -36,3 +36,6 @@ Sorting by price 2
 
 เข้า web หน้าแรก
    welcome.Open
+
+   
+
