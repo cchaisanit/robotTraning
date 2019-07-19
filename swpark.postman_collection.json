@@ -1,0 +1,52 @@
+{
+	"id": "fbf0bae6-2248-40e2-86cc-c4beabdb13af",
+	"name": "Robot",
+	"description": null,
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"c1d546be-fb90-455e-b4a6-5aae463f860d"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "c1d546be-fb90-455e-b4a6-5aae463f860d",
+			"name": "https://jsonplaceholder.typicode.com/users",
+			"url": "https://jsonplaceholder.typicode.com/users",
+			"description": "",
+			"data": null,
+			"dataMode": null,
+			"headerData": null,
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b7e46f6a-4d76-4d4f-bc6a-9bf9d32e3648",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"pm.test(\"Size = 10\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(10);",
+							"});",
+							"});",
+							"pm.test(\"Check 1st username = Bret\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].username).to.eql(\"Bret\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": null,
+			"pathVariables": {}
+		}
+	]
+}
