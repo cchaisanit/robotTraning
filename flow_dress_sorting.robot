@@ -1,6 +1,9 @@
 *** Setting ***
 Resource  ./pages/welcome.robot
 Resource  ./pages/catalog.robot
+Suite Setup  เข้า web หน้าแรก 
+Suite Teardown  Close Browser 
+Test Teardown  welcome.Home
 
 *** Variables ***
 ${URL}  http://automationpractice.com/index.php
@@ -10,14 +13,12 @@ ${Browser}  gc
 *** Test case ***
 Sorting by price
    [tags]  done sprint 1
-   เข้า web หน้าแรก
    เลือกเมนู Summer dress
    ทำการเลือก Sorting ด้วย Price จากแพงไปถูก
    ผลการทำงานต้องแสดงผลจากแพงไปถูก
 
 Sorting by price 2
    [tags]  progress
-   เข้า web หน้าแรก
    เลือกเมนู Summer dress
    ทำการเลือก Sorting ด้วย Price จากแพงไปถูก
    ผลการทำงานต้องแสดงผลจากแพงไปถูก

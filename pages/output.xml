@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20190719 13:41:14.142" generator="Robot 3.0.4 (Python 2.7.13 on win32)">
+<suite source="D:\Training\robot\pages\demo_api_test.robot" id="s1" name="Demo Api Test">
+<test id="s1-t1" name="Call list of user from jsonplaceholder">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>api</arg>
+<arg>https://jsonplaceholder.typicode.com</arg>
+</arguments>
+<msg timestamp="20190719 13:41:14.309" level="INFO">Creating Session using : alias=api, url=https://jsonplaceholder.typicode.com, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20190719 13:41:14.309" starttime="20190719 13:41:14.309"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>api</arg>
+<arg>/users</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20190719 13:41:14.780" level="INFO">Get Request using : alias=api, uri=/users, headers=None json=None</msg>
+<msg timestamp="20190719 13:41:14.780" level="INFO">c:\python27\lib\site-packages\urllib3\connectionpool.py:847: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning)</msg>
+<msg timestamp="20190719 13:41:14.782" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20190719 13:41:14.782" starttime="20190719 13:41:14.311"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${200}</arg>
+<arg>${response.status_code}</arg>
+</arguments>
+<status status="PASS" endtime="20190719 13:41:14.786" starttime="20190719 13:41:14.785"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${response.json()}</arg>
+</arguments>
+<assign>
+<var>${len}</var>
+</assign>
+<msg timestamp="20190719 13:41:14.789" level="INFO">Length is 10</msg>
+<msg timestamp="20190719 13:41:14.789" level="INFO">${len} = 10</msg>
+<status status="PASS" endtime="20190719 13:41:14.789" starttime="20190719 13:41:14.787"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${10}</arg>
+<arg>${len}</arg>
+</arguments>
+<status status="PASS" endtime="20190719 13:41:14.794" starttime="20190719 13:41:14.793"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>Bret1</arg>
+<arg>${response.json()[0]["username"]}</arg>
+</arguments>
+<msg timestamp="20190719 13:41:14.797" level="FAIL">Bret1 != Bret</msg>
+<status status="FAIL" endtime="20190719 13:41:14.798" starttime="20190719 13:41:14.795"></status>
+</kw>
+<status status="FAIL" endtime="20190719 13:41:14.799" critical="yes" starttime="20190719 13:41:14.308">Bret1 != Bret</status>
+</test>
+<status status="FAIL" endtime="20190719 13:41:14.804" starttime="20190719 13:41:14.145"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="Demo Api Test" pass="0">Demo Api Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
